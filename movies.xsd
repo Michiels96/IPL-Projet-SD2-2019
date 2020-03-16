@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="idActor">
+		<xs:restriction base="xs:ID">
+			<xs:pattern value="a[0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="year">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{4}" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="movies">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="actor" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="id" type="idActor" use="required" />
+						<xs:attribute name="name" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="movie" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="year" type="year"/>
+								<xs:attribute name="actors" type="xs:IDREFS" use="required"/>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

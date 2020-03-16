@@ -1,0 +1,7 @@
+<!ELEMENT movies (actor*, movie*)>
+<!ELEMENT actor EMPTY>
+<!ATTLIST actor id ID #REQUIRED>
+<!ATTLIST actor name CDATA #REQUIRED>
+<!ELEMENT movie (#PCDATA)>
+<!ATTLIST movie year CDATA #IMPLIED>
+<!ATTLIST movie actors IDREFS #REQUIRED>
